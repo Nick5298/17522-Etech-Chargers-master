@@ -525,12 +525,12 @@ public class LeftAuto extends LinearOpMode {
         }
 
         /* Actually do something useful */
-        if(tagOfInterest == null || tagOfInterest.id == middle) {
+        if(tagOfInterest == null || tagOfInterest.id == right) {
             //middle code
             finalx = -36;
             finaly = -12;
             finalh = 0;
-            telemetry.addLine("Middle");
+            telemetry.addLine("Middle-acRIGHT");
             telemetry.update();
         }else if (tagOfInterest.id == left){
             //left code
@@ -539,12 +539,12 @@ public class LeftAuto extends LinearOpMode {
             finalh = 0;
             telemetry.addLine("left");
             telemetry.update();
-        }else if (tagOfInterest.id == right){
+        }else if (tagOfInterest.id == middle){
             //right code
             finalx = -12;
             finaly = -15;
             finalh = 0;
-            telemetry.addLine("right");
+            telemetry.addLine("right-acMID");
             telemetry.update();
         }
         Trajectory straf = drive.trajectoryBuilder(trajseq.end())

@@ -27,25 +27,25 @@ import java.util.ArrayList;
 public class RightAuto extends LinearOpMode {
 
     //amount of grab the claw does //go higher for more grab, go less for less grab
-    private double grab = 0.85;
+    private double grab = 1;
     //the prep pivot amount //to clear the pole when extending, keep this number lower than the score pivot amount // decrease to be further from the pole, increase to be closer
-    private int preppivot =1220;
+    private int preppivot =1220+20;
     //the score pivot amount //increase to be further over the pole, decrease to be less over the pole
-    private int scorepivot = 1275+4;
+    private int scorepivot = 1272-2;
     //the amount the slide extends when scoring //increase to reach out more, decrease to reach out less
-    private int scoreslide = 695;
+    private int scoreslide = 695+1;
 
     // arm angle to grab //increase to be higher off ground, decrease to be lower
-    int entryVal1 = 376+15+1;
-    int entryVal2 = 360+15+3;
-    int entryVal3 = 342+15+4;
-    int entryVal4 = 322+15+4;
-    int EntryVal5 = 313+15;
+    int entryVal1 = 382-16;
+    int entryVal2 = 368-16;
+    int entryVal3 = 358;
+    int entryVal4 = 340;
+    int EntryVal5 = 328;
 
     //the amount the slide reaches //increase/decrease by small numbers, increase to reach further, decrease to reach less far
-    private int reach1 = 684-6;//Delete this
-    private int reach2 = 700-5;
-    private int reach3 = 710-2;
+    private int reach1 = 684-7;//Delete this
+    private int reach2 = 700-6;
+    private int reach3 = 710-4;
     private int reach4 = 723-6;
     private int reach5 = 738-3;
 
@@ -250,7 +250,7 @@ public class RightAuto extends LinearOpMode {
 
                     })
                     .UNSTABLE_addTemporalMarkerOffset(0.3,() -> {
-                        armset(scorepivot+10,1);
+                        armset(scorepivot+5,1);
 
                     })
                     .waitSeconds(0.5)
