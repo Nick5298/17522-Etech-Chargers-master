@@ -27,7 +27,7 @@ import java.util.ArrayList;
 public class LeftAuto extends LinearOpMode {
 
     //amount of grab the claw does //go higher for more grab, go less for less grab
-    private double grab = 1;
+    private double grab = 1.2;
     //the prep pivot amount //to clear the pole when extending, keep this number lower than the score pivot amount // decrease to be further from the pole, increase to be closer
     private int preppivot = 1220;
     //the score pivot amount //increase to be further over the pole, decrease to be less over the pole
@@ -36,10 +36,10 @@ public class LeftAuto extends LinearOpMode {
     private int scoreslide = 695;
 
     // arm angle to grab //increase to be higher off ground, decrease to be lower
-    int entryVal1 = 405;
-    int entryVal2 = 390;
-    int entryVal3 = 360+5;
-    int entryVal4 = 350+2;
+    int entryVal1 = 405-5;
+    int entryVal2 = 390-10;
+    int entryVal3 = 360+10;
+    int entryVal4 = 350+2-10;
     int EntryVal5 = 313+10;
 
     //the amount the slide reaches //increase/decrease by small numbers, increase to reach further, decrease to reach less far
@@ -233,7 +233,7 @@ public class LeftAuto extends LinearOpMode {
         {
             trajseq = drive.trajectorySequenceBuilder(startPose)
                     .lineToLinearHeading(new Pose2d(-35, -22, (Math.toRadians(135))))
-                    .lineToLinearHeading(new Pose2d(-31, -3.7, (Math.toRadians(189))))
+                    .lineToLinearHeading(new Pose2d(-31, -4, (Math.toRadians(189))))
 
                     .addDisplacementMarker(20, () -> {
                     slide.setTargetPosition(0);
@@ -242,17 +242,17 @@ public class LeftAuto extends LinearOpMode {
                     })
                     //FINISH LINE
                     .UNSTABLE_addTemporalMarkerOffset(-2.7,() -> {
-                        armset(preppivot+5,1);
+                        armset(preppivot,1);
                     })
                     .UNSTABLE_addTemporalMarkerOffset(0,() -> {
                         slideset(scoreslide,1);
 
                     })
                     .UNSTABLE_addTemporalMarkerOffset(0.3,() -> {
-                        armset(scorepivot+4,1);
+                        armset(scorepivot-1,1);
 
                     })
-                    .waitSeconds(0.5)
+                    .waitSeconds(0.6)
                     .UNSTABLE_addTemporalMarkerOffset(0,() -> {
                         claw.setPosition(0.5);
                     })
@@ -347,7 +347,7 @@ public class LeftAuto extends LinearOpMode {
 
                     })
                     .UNSTABLE_addTemporalMarkerOffset(0,() -> {
-                        armset(scorepivot+4,1);
+                        armset(scorepivot+5,1);
 
                     })
                     .waitSeconds(0.5)
@@ -525,7 +525,7 @@ public class LeftAuto extends LinearOpMode {
         }
 
         /* Actually do something useful */
-        if(tagOfInterest == null || tagOfInterest.id == right) {
+        if(tagOfInterest == null || tagOfInterest.id == middle) {
             //middle code
             finalx = -36;
             finaly = -12;
@@ -539,7 +539,7 @@ public class LeftAuto extends LinearOpMode {
             finalh = 0;
             telemetry.addLine("left");
             telemetry.update();
-        }else if (tagOfInterest.id == middle){
+        }else if (tagOfInterest.id == right ){
             //right code
             finalx = -12;
             finaly = -15;
