@@ -29,23 +29,23 @@ public class LeftAuto extends LinearOpMode {
     //amount of grab the claw does //go higher for more grab, go less for less grab
     private double grab = 1.2;
     //the prep pivot amount //to clear the pole when extending, keep this number lower than the score pivot amount // decrease to be further from the pole, increase to be closer
-    private int preppivot = 1220;
+    private int preppivot = 1220-5;
     //the score pivot amount //increase to be further over the pole, decrease to be less over the pole
-    private int scorepivot = 1280-5;
+    private int scorepivot = 1280-5-3;
     //the amount the slide extends when scoring //increase to reach out more, decrease to reach out less
     private int scoreslide = 695;
 
     // arm angle to grab //increase to be higher off ground, decrease to be lower
-    int entryVal1 = 405-5;
-    int entryVal2 = 390-10;
-    int entryVal3 = 360+10;
+    int entryVal1 = 405-2;
+    int entryVal2 = 390-3;
+    int entryVal3 = 360+11;
     int entryVal4 = 350+2-10;
     int EntryVal5 = 313+10;
 
     //the amount the slide reaches //increase/decrease by small numbers, increase to reach further, decrease to reach less far
     private int reach1 = 670;
     private int reach2 = 680;
-    private int reach3 = 685;
+    private int reach3 = 686;
     private int reach4 = 695;
     private int reach5 = 695;
 
@@ -233,7 +233,7 @@ public class LeftAuto extends LinearOpMode {
         {
             trajseq = drive.trajectorySequenceBuilder(startPose)
                     .lineToLinearHeading(new Pose2d(-35, -22, (Math.toRadians(135))))
-                    .lineToLinearHeading(new Pose2d(-31, -4, (Math.toRadians(189))))
+                    .lineToLinearHeading(new Pose2d(-31, -4.5, (Math.toRadians(189))))
 
                     .addDisplacementMarker(20, () -> {
                     slide.setTargetPosition(0);
@@ -249,7 +249,7 @@ public class LeftAuto extends LinearOpMode {
 
                     })
                     .UNSTABLE_addTemporalMarkerOffset(0.3,() -> {
-                        armset(scorepivot-1,1);
+                        armset(scorepivot-3,1);
 
                     })
                     .waitSeconds(0.6)
@@ -297,7 +297,7 @@ public class LeftAuto extends LinearOpMode {
                         slideset(scoreslide,1);
                     })
                     .UNSTABLE_addTemporalMarkerOffset(0,() -> {
-                        armset(scorepivot+4,1);
+                        armset(scorepivot+3,1);
 
                     })
                     .waitSeconds(0.5)
