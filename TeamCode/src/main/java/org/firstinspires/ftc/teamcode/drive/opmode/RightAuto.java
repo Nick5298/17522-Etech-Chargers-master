@@ -29,25 +29,24 @@ public class RightAuto extends LinearOpMode {
     //amount of grab the claw does //go higher for more grab, go less for less grab
     private double grab = 1;
     //the prep pivot amount //to clear the pole when extending, keep this number lower than the score pivot amount // decrease to be further from the pole, increase to be closer
-    private int preppivot =1220+20;
+    private int preppivot =1220+10;
     //the score pivot amount //increase to be further over the pole, decrease to be less over the pole
-    private int scorepivot = 1272-2;
+    private int scorepivot = 1272+2;
     //the amount the slide extends when scoring //increase to reach out more, decrease to reach out less
     private int scoreslide = 695+1;
 
     // arm angle to grab //increase to be higher off ground, decrease to be lower
-    int entryVal1 = 382-16;
-    int entryVal2 = 368-16;
-    int entryVal3 = 358;
-    int entryVal4 = 340;
-    int EntryVal5 = 328;
-
+    int entryVal1 = 405-2+1;
+    int entryVal2 = 390-3+1;
+    int entryVal3 = 360+10+6;
+    int entryVal4 = 350-10+6;
+    int EntryVal5 = 313+10;
     //the amount the slide reaches //increase/decrease by small numbers, increase to reach further, decrease to reach less far
-    private int reach1 = 684-7;
-    private int reach2 = 700-6;
-    private int reach3 = 710-4;
-    private int reach4 = 723-6;
-    private int reach5 = 738-3;
+    private int reach1 = 670-4;//
+    private int reach2 = 680-3;
+    private int reach3 = 686-4;
+    private int reach4 = 695-2;
+    private int reach5 = 695;
 
     double servoinpulses = 20.0 / 41793;
     public DcMotor Arm;
@@ -232,7 +231,7 @@ public class RightAuto extends LinearOpMode {
         //TrajectorySequence traj2 = null;
         {
             trajseq = drive.trajectorySequenceBuilder(startPose)
-                    .lineToLinearHeading(new Pose2d(36, 0, (Math.toRadians(-13.5))))
+                    .lineToLinearHeading(new Pose2d(36, 0, (Math.toRadians(-13))))
 
                     .addDisplacementMarker(20, () -> {
                     slide.setTargetPosition(0);
@@ -348,7 +347,7 @@ public class RightAuto extends LinearOpMode {
 
                     })
                     .UNSTABLE_addTemporalMarkerOffset(0,() -> {
-                        armset(scorepivot,1);
+                        armset(scorepivot+2,1);
 
                     })
                     .waitSeconds(0.3)
@@ -397,7 +396,7 @@ public class RightAuto extends LinearOpMode {
 
                     })
                     .UNSTABLE_addTemporalMarkerOffset(0.1,() -> {
-                        armset(scorepivot,1);
+                        armset(scorepivot+2,1);
 
                     })
                     .waitSeconds(0.3)
@@ -446,10 +445,10 @@ public class RightAuto extends LinearOpMode {
 
                     })
                     .UNSTABLE_addTemporalMarkerOffset(0.1,() -> {
-                        armset(scorepivot,1);
+                        armset(scorepivot+2,1);
 
                     })
-                    .waitSeconds(0.3)
+                    .waitSeconds(0.35)
                     .UNSTABLE_addTemporalMarkerOffset(0.2,() -> {
                         claw.setPosition(0.5);
                     })
