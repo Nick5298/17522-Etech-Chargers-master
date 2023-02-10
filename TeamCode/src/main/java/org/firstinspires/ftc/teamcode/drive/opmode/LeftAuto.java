@@ -43,7 +43,7 @@ public class LeftAuto extends LinearOpMode {
     int EntryVal5 = 313+10;
 
     //the amount the slide reaches //increase/decrease by small numbers, increase to reach further, decrease to reach less far
-    private int reach1 = 670;
+    private int reach1 = 670;//
     private int reach2 = 680;
     private int reach3 = 686;
     private int reach4 = 695;
